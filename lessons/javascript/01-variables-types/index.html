@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 01 - Variables and Data Types</title>
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+
+</head>
+<body>
+  <main class="container lesson-layout">
+    <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
+    <h1>JavaScript 01 - Variables and Data Types</h1>
+
+<section class="card">
+  <h2>Open DevTools Console</h2>
+  <p>This lesson shows <code>let</code>, <code>const</code>, string, number, boolean, array, and object.</p>
+  <div id="output" class="demo-box"></div>
+</section>
+
+  </main>
+  <script>
+const schoolName = 'Web Design School';
+let studentCount = 25;
+let isOpen = true;
+let skills = ['HTML', 'CSS', 'JavaScript'];
+let teacher = { name: 'Teacher Chhit', subject: 'Web Development' };
+
+console.log(schoolName, studentCount, isOpen, skills, teacher);
+document.getElementById('output').innerHTML = `
+  <p><strong>School:</strong> ${schoolName}</p>
+  <p><strong>Students:</strong> ${studentCount}</p>
+  <p><strong>Open:</strong> ${isOpen}</p>
+  <p><strong>Skills:</strong> ${skills.join(', ')}</p>
+  <p><strong>Teacher:</strong> ${teacher.name}</p>
+`;
+</script>
+</body>
+</html>

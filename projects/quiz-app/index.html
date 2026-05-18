@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project 04 - Quiz App</title>
+  <link rel="stylesheet" href="../../assets/css/main.css">
+
+</head>
+<body>
+  <main class="container lesson-layout">
+    <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
+    <h1>Project 04 - Quiz App</h1>
+
+<section class="card quiz-card">
+  <h2>Web Basic Quiz</h2>
+  <div id="question"></div>
+  <div id="answers"></div>
+  <p id="score"></p>
+</section>
+<style>
+.quiz-card { max-width:680px; margin:auto; }
+.answer { display:block; width:100%; margin:10px 0; padding:14px; border:1px solid #e5e7eb; border-radius:12px; background:white; cursor:pointer; text-align:left; }
+.answer:hover { background:#eef2ff; }
+</style>
+<script>
+const quiz = [
+  { q: 'What does HTML do?', a: ['Style page', 'Structure page', 'Store database'], correct: 1 },
+  { q: 'Which language is used for styling?', a: ['CSS', 'SQL', 'PHP'], correct: 0 },
+  { q: 'Which method selects an element by ID?', a: ['queryAll()', 'getElementById()', 'push()'], correct: 1 }
+];
+let index = 0;
+let score = 0;
+function renderQuiz() {
+  if (index >= quiz.length) {
+    document.getElementById('question').innerHTML = '<h3>Quiz Finished</h3>';
+    document.getElementById('answers').innerHTML = '';
+    document.getElementById('score').textContent = 'Your score: ' + score + '/' + quiz.length;
+    return;
+  }
+  const item = quiz[index];
+  document.getElementById('question').innerHTML = '<h3>' + item.q + '</h3>';
+  document.getElementById('answers').innerHTML = item.a.map((answer, i) => `<button class="answer" onclick="chooseAnswer(${i})">${answer}</button>`).join('');
+  document.getElementById('score').textContent = 'Question ' + (index + 1) + ' of ' + quiz.length;
+}
+function chooseAnswer(choice) {
+  if (choice === quiz[index].correct) score++;
+  index++;
+  renderQuiz();
+}
+renderQuiz();
+</script>
+
+  </main>
+</body>
+</html>

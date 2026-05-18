@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 03 - Functions</title>
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+
+</head>
+<body>
+  <main class="container lesson-layout">
+    <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
+    <h1>JavaScript 03 - Functions</h1>
+
+<section class="card">
+  <h2>Function Demo</h2>
+  <label>Price</label>
+  <input id="price" type="number" value="100">
+  <label>Discount %</label>
+  <input id="discount" type="number" value="20">
+  <button class="button" onclick="showFinalPrice()">Calculate</button>
+  <div id="result" class="demo-box"></div>
+</section>
+
+  </main>
+  <script>
+function calculateDiscount(price, percent) {
+  const discountAmount = price * percent / 100;
+  return price - discountAmount;
+}
+
+function showFinalPrice() {
+  const price = Number(document.getElementById('price').value);
+  const discount = Number(document.getElementById('discount').value);
+  const finalPrice = calculateDiscount(price, discount);
+  document.getElementById('result').textContent = `Final price is $${finalPrice.toFixed(2)}`;
+}
+showFinalPrice();
+</script>
+</body>
+</html>

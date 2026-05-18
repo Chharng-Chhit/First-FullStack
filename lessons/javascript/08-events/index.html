@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 08 - Events</title>
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+
+</head>
+<body>
+  <main class="container lesson-layout">
+    <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
+    <h1>JavaScript 08 - Events</h1>
+
+<section class="card">
+  <h2>Event Listener Demo</h2>
+  <button id="clickBtn" class="button">Click Me</button>
+  <label>Type something</label>
+  <input id="textInput" placeholder="Type here...">
+  <div id="output" class="demo-box"></div>
+</section>
+
+  </main>
+  <script>
+const button = document.getElementById('clickBtn');
+const input = document.getElementById('textInput');
+const output = document.getElementById('output');
+
+button.addEventListener('click', function() {
+  output.textContent = 'Button was clicked!';
+});
+
+input.addEventListener('input', function(event) {
+  output.textContent = 'You typed: ' + event.target.value;
+});
+</script>
+</body>
+</html>

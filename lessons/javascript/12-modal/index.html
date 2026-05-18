@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 12 - Modal</title>
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+
+</head>
+<body>
+  <main class="container lesson-layout">
+    <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
+    <h1>JavaScript 12 - Modal</h1>
+
+<style>
+.modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); align-items:center; justify-content:center; padding:20px; }
+.modal-box { background:#fff; padding:28px; border-radius:20px; width:min(420px, 100%); }
+</style>
+<section class="card">
+  <h2>Modal Popup</h2>
+  <button class="button" onclick="openModal()">Open Modal</button>
+</section>
+<div id="modal" class="modal-bg">
+  <div class="modal-box">
+    <h2>Hello Modal</h2>
+    <p>This popup is controlled by JavaScript.</p>
+    <button class="button" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+  </main>
+  <script>
+function openModal() {
+  document.getElementById('modal').style.display = 'flex';
+}
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById('modal');
+  if (event.target === modal) closeModal();
+});
+</script>
+</body>
+</html>

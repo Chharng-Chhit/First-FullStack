@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 06 - Objects</title>
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+
+</head>
+<body>
+  <main class="container lesson-layout">
+    <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
+    <h1>JavaScript 06 - Objects</h1>
+
+<section class="card">
+  <h2>Object Demo</h2>
+  <div id="profile" class="demo-box"></div>
+</section>
+
+  </main>
+  <script>
+const student = {
+  name: 'Dara',
+  age: 18,
+  skill: 'JavaScript',
+  score: 92,
+  introduce: function() {
+    return `My name is ${this.name}. I am learning ${this.skill}.`;
+  }
+};
+
+document.getElementById('profile').innerHTML = `
+  <h3>${student.name}</h3>
+  <p>Age: ${student.age}</p>
+  <p>Skill: ${student.skill}</p>
+  <p>Score: ${student.score}</p>
+  <p>${student.introduce()}</p>
+`;
+</script>
+</body>
+</html>

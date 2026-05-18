@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 10 - Todo App</title>
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+
+</head>
+<body>
+  <main class="container lesson-layout">
+    <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
+    <h1>JavaScript 10 - Todo App</h1>
+
+<section class="card">
+  <h2>Todo App</h2>
+  <div style="display:flex; gap:10px;">
+    <input id="todoInput" placeholder="Add new task">
+    <button class="button" onclick="addTodo()">Add</button>
+  </div>
+  <ul id="todoList" class="demo-box"></ul>
+</section>
+
+  </main>
+  <script>
+let todos = ['Learn HTML', 'Practice CSS', 'Build JS project'];
+
+function renderTodos() {
+  const list = document.getElementById('todoList');
+  list.innerHTML = todos.map((todo, index) => `
+    <li style="display:flex; justify-content:space-between; gap:10px; margin:8px 0;">
+      <span>${todo}</span>
+      <button onclick="deleteTodo(${index})">Delete</button>
+    </li>
+  `).join('');
+}
+
+function addTodo() {
+  const input = document.getElementById('todoInput');
+  const value = input.value.trim();
+  if (value) {
+    todos.push(value);
+    input.value = '';
+    renderTodos();
+  }
+}
+
+function deleteTodo(index) {
+  todos.splice(index, 1);
+  renderTodos();
+}
+renderTodos();
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 13 - Slider</title>
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+
+</head>
+<body>
+  <main class="container lesson-layout">
+    <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
+    <h1>JavaScript 13 - Slider</h1>
+
+<section class="card">
+  <h2>Simple Slider</h2>
+  <div id="slide" class="demo-box" style="text-align:center; font-size:24px; font-weight:bold; min-height:140px; display:flex; align-items:center; justify-content:center;"></div>
+  <button class="button" onclick="prevSlide()">Previous</button>
+  <button class="button" onclick="nextSlide()">Next</button>
+</section>
+
+  </main>
+  <script>
+const slides = [
+  'Slide 1: Learn HTML',
+  'Slide 2: Style with CSS',
+  'Slide 3: Add JavaScript',
+  'Slide 4: Build Projects'
+];
+let currentSlide = 0;
+
+function showSlide() {
+  document.getElementById('slide').textContent = slides[currentSlide];
+}
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide();
+}
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide();
+}
+showSlide();
+setInterval(nextSlide, 3000);
+</script>
+</body>
+</html>

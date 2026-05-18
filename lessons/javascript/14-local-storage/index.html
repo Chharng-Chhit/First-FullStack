@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 14 - Local Storage</title>
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+
+</head>
+<body>
+  <main class="container lesson-layout">
+    <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
+    <h1>JavaScript 14 - Local Storage</h1>
+
+<section class="card">
+  <h2>Save Name in Browser</h2>
+  <label>Your name</label>
+  <input id="nameInput" placeholder="Enter your name">
+  <button class="button" onclick="saveName()">Save</button>
+  <button class="button" onclick="clearName()">Clear</button>
+  <div id="output" class="demo-box"></div>
+</section>
+
+  </main>
+  <script>
+const input = document.getElementById('nameInput');
+const output = document.getElementById('output');
+
+function showSavedName() {
+  const name = localStorage.getItem('studentName');
+  output.textContent = name ? `Welcome back, ${name}!` : 'No name saved yet.';
+}
+
+function saveName() {
+  localStorage.setItem('studentName', input.value.trim());
+  input.value = '';
+  showSavedName();
+}
+
+function clearName() {
+  localStorage.removeItem('studentName');
+  showSavedName();
+}
+showSavedName();
+</script>
+</body>
+</html>

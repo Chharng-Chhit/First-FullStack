@@ -1,0 +1,17 @@
+.grid-demo {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+  gap: 12px;
+}
+.grid-demo > div { padding: 30px; border-radius: 14px; font-weight: bold; text-align: center; }
+.header { grid-area: header; background: #c7d2fe; }
+.sidebar { grid-area: sidebar; background: #bfdbfe; }
+.content { grid-area: content; background: #bbf7d0; min-height: 180px; }
+.footer-grid { grid-area: footer; background: #fde68a; }
+@media (max-width: 700px) {
+  .grid-demo { grid-template-columns: 1fr; grid-template-areas: "header" "sidebar" "content" "footer"; }
+}
