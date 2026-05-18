@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@vitejs/plugin-vue": "latest",
+    "axios": "latest",
     "vite": "latest",
     "vue": "latest",
-    "axios": "latest"
-  },
-  "devDependencies": {}
+    "vue-router": "^5.0.7"
+  }
 }
