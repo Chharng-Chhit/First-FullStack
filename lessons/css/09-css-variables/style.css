@@ -1,4 +1,22 @@
-:root { --main-color: #7c3aed; --spacing: 18px; --round: 16px; }
-.variable-demo { border-top: 8px solid var(--main-color); }
-.variable-demo h2 { color: var(--main-color); }
-.variable-demo button { background: var(--main-color); color: white; padding: var(--spacing); border: 0; border-radius: var(--round); font-weight: bold; }
+:root {
+    --main-color: #7c3aed;
+    --spacing: 18px;
+    --round: 16px;
+}
+
+.variable-demo {
+    border-top: 8px solid var(--main-color);
+}
+
+.variable-demo h2 {
+    color: var(--main-color);
+}
+
+.variable-demo button {
+    background: var(--main-color);
+    color: white;
+    padding: var(--spacing);
+    border: 0;
+    border-radius: var(--round);
+    font-weight: bold;
+}

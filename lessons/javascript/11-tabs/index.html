@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +8,35 @@
   <link rel="stylesheet" href="../../../assets/css/main.css">
 
 </head>
+
 <body>
   <main class="container lesson-layout">
     <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
     <h1>JavaScript 11 - Tabs</h1>
 
-<section class="card">
-  <h2>Tabs Component</h2>
-  <div class="tab-buttons">
-    <button class="button" onclick="openTab('html')">HTML</button>
-    <button class="button" onclick="openTab('css')">CSS</button>
-    <button class="button" onclick="openTab('js')">JavaScript</button>
-  </div>
-  <div id="tabContent" class="demo-box"></div>
-</section>
+    <section class="card">
+      <h2>Tabs Component</h2>
+      <div class="tab-buttons">
+        <button class="button" onclick="openTab('html')">HTML</button>
+        <button class="button" onclick="openTab('css')">CSS</button>
+        <button class="button" onclick="openTab('js')">JavaScript</button>
+      </div>
+      <div id="tabContent" class="demo-box"></div>
+    </section>
 
   </main>
   <script>
-const lessons = {
-  html: '<h3>HTML</h3><p>HTML creates the structure of a webpage.</p>',
-  css: '<h3>CSS</h3><p>CSS makes the webpage beautiful and responsive.</p>',
-  js: '<h3>JavaScript</h3><p>JavaScript makes the webpage interactive.</p>'
-};
+    const lessons = {
+      html: '<h3>HTML</h3><p>HTML creates the structure of a webpage.</p>',
+      css: '<h3>CSS</h3><p>CSS makes the webpage beautiful and responsive.</p>',
+      js: '<h3>JavaScript</h3><p>JavaScript makes the webpage interactive.</p>'
+    };
 
-function openTab(name) {
-  document.getElementById('tabContent').innerHTML = lessons[name];
-}
-openTab('html');
-</script>
+    function openTab(name) {
+      document.getElementById('tabContent').innerHTML = lessons[name];
+    }
+    openTab('html');
+  </script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,30 +8,65 @@
   <link rel="stylesheet" href="../../assets/css/main.css">
 
 </head>
+
 <body>
   <main class="container lesson-layout">
     <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
     <h1>Project 01 - Student Profile Card</h1>
 
-<section class="profile-card">
-  <img src="../../assets/images/logo.svg" alt="Profile image">
-  <h2>Dara Sok</h2>
-  <p>Frontend Student</p>
-  <div class="skills"><span>HTML</span><span>CSS</span><span>JS</span></div>
-  <button onclick="followStudent()">Follow</button>
-  <p id="status"></p>
-</section>
-<style>
-.profile-card { max-width:380px; margin:auto; background:white; padding:28px; border-radius:24px; text-align:center; box-shadow:0 20px 40px rgba(0,0,0,.1); }
-.profile-card img { width:180px; border-radius:20px; }
-.skills { display:flex; justify-content:center; gap:10px; margin:18px 0; }
-.skills span { background:#eef2ff; color:#4f46e5; padding:8px 12px; border-radius:999px; font-weight:700; }
-.profile-card button { background:#4f46e5; color:white; border:0; padding:12px 20px; border-radius:12px; cursor:pointer; }
-</style>
-<script>
-function followStudent() { document.getElementById('status').textContent = 'You followed Dara Sok!'; }
-</script>
+    <section class="profile-card">
+      <img src="../../assets/images/logo.svg" alt="Profile image">
+      <h2>Dara Sok</h2>
+      <p>Frontend Student</p>
+      <div class="skills"><span>HTML</span><span>CSS</span><span>JS</span></div>
+      <button onclick="followStudent()">Follow</button>
+      <p id="status"></p>
+    </section>
+    <style>
+      .profile-card {
+        max-width: 380px;
+        margin: auto;
+        background: white;
+        padding: 28px;
+        border-radius: 24px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .1);
+      }
+
+      .profile-card img {
+        width: 180px;
+        border-radius: 20px;
+      }
+
+      .skills {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 18px 0;
+      }
+
+      .skills span {
+        background: #eef2ff;
+        color: #4f46e5;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-weight: 700;
+      }
+
+      .profile-card button {
+        background: #4f46e5;
+        color: white;
+        border: 0;
+        padding: 12px 20px;
+        border-radius: 12px;
+        cursor: pointer;
+      }
+    </style>
+    <script>
+      function followStudent() { document.getElementById('status').textContent = 'You followed Dara Sok!'; }
+    </script>
 
   </main>
 </body>
+
 </html>

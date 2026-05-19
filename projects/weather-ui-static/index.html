@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +8,73 @@
   <link rel="stylesheet" href="../../assets/css/main.css">
 
 </head>
+
 <body>
   <main class="container lesson-layout">
     <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
     <h1>Project 05 - Weather UI Static</h1>
 
-<section class="weather">
-  <div class="current">
-    <p>Phnom Penh</p>
-    <h1>31°C</h1>
-    <p>Partly Cloudy</p>
-  </div>
-  <div class="forecast">
-    <div><strong>Mon</strong><span>32°C</span></div>
-    <div><strong>Tue</strong><span>31°C</span></div>
-    <div><strong>Wed</strong><span>30°C</span></div>
-    <div><strong>Thu</strong><span>29°C</span></div>
-  </div>
-</section>
-<style>
-.weather { max-width:720px; margin:auto; background:linear-gradient(135deg,#06b6d4,#4f46e5); color:white; padding:36px; border-radius:32px; }
-.current { text-align:center; }
-.current h1 { font-size:90px; margin:0; }
-.forecast { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:28px; }
-.forecast div { background:rgba(255,255,255,.18); padding:18px; border-radius:18px; text-align:center; display:flex; flex-direction:column; gap:8px; }
-@media(max-width:620px){ .forecast { grid-template-columns:repeat(2,1fr); } .current h1 { font-size:64px; } }
-</style>
+    <section class="weather">
+      <div class="current">
+        <p>Phnom Penh</p>
+        <h1>31°C</h1>
+        <p>Partly Cloudy</p>
+      </div>
+      <div class="forecast">
+        <div><strong>Mon</strong><span>32°C</span></div>
+        <div><strong>Tue</strong><span>31°C</span></div>
+        <div><strong>Wed</strong><span>30°C</span></div>
+        <div><strong>Thu</strong><span>29°C</span></div>
+      </div>
+    </section>
+    <style>
+      .weather {
+        max-width: 720px;
+        margin: auto;
+        background: linear-gradient(135deg, #06b6d4, #4f46e5);
+        color: white;
+        padding: 36px;
+        border-radius: 32px;
+      }
+
+      .current {
+        text-align: center;
+      }
+
+      .current h1 {
+        font-size: 90px;
+        margin: 0;
+      }
+
+      .forecast {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .forecast div {
+        background: rgba(255, 255, 255, .18);
+        padding: 18px;
+        border-radius: 18px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      @media(max-width:620px) {
+        .forecast {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .current h1 {
+          font-size: 64px;
+        }
+      }
+    </style>
 
   </main>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +8,42 @@
   <link rel="stylesheet" href="../../../assets/css/main.css">
 
 </head>
+
 <body>
   <main class="container lesson-layout">
     <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
     <h1>JavaScript 02 - Operators and Conditions</h1>
 
-<section class="card">
-  <h2>Score Checker</h2>
-  <label for="score">Enter score</label>
-  <input id="score" type="number" value="75">
-  <button class="button" onclick="checkScore()">Check</button>
-  <div id="result" class="demo-box">Result will show here.</div>
-</section>
+    <section class="card">
+      <h2>Score Checker</h2>
+      <label for="score">Enter score</label>
+      <input id="score" type="number" value="75">
+      <button class="button" onclick="checkScore()">Check</button>
+      <div id="result" class="demo-box">Result will show here.</div>
+    </section>
 
   </main>
   <script>
-function checkScore() {
-  const score = Number(document.getElementById('score').value);
-  let message = '';
+    function checkScore() {
+      const score = Number(document.getElementById('score').value);
+      let message = '';
 
-  if (score >= 90) {
-    message = 'Grade A - Excellent';
-  } else if (score >= 80) {
-    message = 'Grade B - Very good';
-  } else if (score >= 70) {
-    message = 'Grade C - Good';
-  } else if (score >= 50) {
-    message = 'Pass';
-  } else {
-    message = 'Fail - Need more practice';
-  }
+      if (score >= 90) {
+        message = 'Grade A - Excellent';
+      } else if (score >= 80) {
+        message = 'Grade B - Very good';
+      } else if (score >= 70) {
+        message = 'Grade C - Good';
+      } else if (score >= 50) {
+        message = 'Pass';
+      } else {
+        message = 'Fail - Need more practice';
+      }
 
-  document.getElementById('result').textContent = message;
-}
-checkScore();
-</script>
+      document.getElementById('result').textContent = message;
+    }
+    checkScore();
+  </script>
 </body>
+
 </html>

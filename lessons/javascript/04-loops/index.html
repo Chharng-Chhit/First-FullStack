@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,38 +8,40 @@
   <link rel="stylesheet" href="../../../assets/css/main.css">
 
 </head>
+
 <body>
   <main class="container lesson-layout">
     <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
     <h1>JavaScript 04 - Loops</h1>
 
-<section class="card">
-  <h2>Loop Output</h2>
-  <button class="button" onclick="showNumbers()">Run For Loop</button>
-  <button class="button" onclick="showCountdown()">Run While Loop</button>
-  <div id="output" class="demo-box"></div>
-</section>
+    <section class="card">
+      <h2>Loop Output</h2>
+      <button class="button" onclick="showNumbers()">Run For Loop</button>
+      <button class="button" onclick="showCountdown()">Run While Loop</button>
+      <div id="output" class="demo-box"></div>
+    </section>
 
   </main>
   <script>
-function showNumbers() {
-  let html = '<h3>For loop</h3>';
-  for (let i = 1; i <= 10; i++) {
-    html += `<p>Number ${i}</p>`;
-  }
-  document.getElementById('output').innerHTML = html;
-}
+    function showNumbers() {
+      let html = '<h3>For loop</h3>';
+      for (let i = 1; i <= 10; i++) {
+        html += `<p>Number ${i}</p>`;
+      }
+      document.getElementById('output').innerHTML = html;
+    }
 
-function showCountdown() {
-  let count = 5;
-  let html = '<h3>While loop countdown</h3>';
-  while (count >= 1) {
-    html += `<p>${count}</p>`;
-    count--;
-  }
-  document.getElementById('output').innerHTML = html + '<strong>Go!</strong>';
-}
-showNumbers();
-</script>
+    function showCountdown() {
+      let count = 5;
+      let html = '<h3>While loop countdown</h3>';
+      while (count >= 1) {
+        html += `<p>${count}</p>`;
+        count--;
+      }
+      document.getElementById('output').innerHTML = html + '<strong>Go!</strong>';
+    }
+    showNumbers();
+  </script>
 </body>
+
 </html>

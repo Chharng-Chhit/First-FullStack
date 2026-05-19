@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,58 +8,60 @@
   <link rel="stylesheet" href="../../../assets/css/main.css">
 
 </head>
+
 <body>
   <main class="container lesson-layout">
     <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
     <h1>JavaScript 09 - Form Validation</h1>
 
-<section class="card">
-  <h2>Register</h2>
-  <form id="registerForm" novalidate>
-    <label>Name</label>
-    <input id="name" placeholder="Your name">
-    <label>Email</label>
-    <input id="email" type="email" placeholder="example@gmail.com">
-    <label>Password</label>
-    <input id="password" type="password" placeholder="At least 6 characters">
-    <button class="button" type="submit">Register</button>
-  </form>
-  <div id="message" class="demo-box"></div>
-</section>
+    <section class="card">
+      <h2>Register</h2>
+      <form id="registerForm" novalidate>
+        <label>Name</label>
+        <input id="name" placeholder="Your name">
+        <label>Email</label>
+        <input id="email" type="email" placeholder="example@gmail.com">
+        <label>Password</label>
+        <input id="password" type="password" placeholder="At least 6 characters">
+        <button class="button" type="submit">Register</button>
+      </form>
+      <div id="message" class="demo-box"></div>
+    </section>
 
   </main>
   <script>
-const form = document.getElementById('registerForm');
-const message = document.getElementById('message');
+    const form = document.getElementById('registerForm');
+    const message = document.getElementById('message');
 
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
 
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
 
-  if (name.length < 2) {
-    message.textContent = 'Name must be at least 2 characters.';
-    message.style.color = '#dc2626';
-    return;
-  }
+      if (name.length < 2) {
+        message.textContent = 'Name must be at least 2 characters.';
+        message.style.color = '#dc2626';
+        return;
+      }
 
-  if (!email.includes('@')) {
-    message.textContent = 'Email must include @.';
-    message.style.color = '#dc2626';
-    return;
-  }
+      if (!email.includes('@')) {
+        message.textContent = 'Email must include @.';
+        message.style.color = '#dc2626';
+        return;
+      }
 
-  if (password.length < 6) {
-    message.textContent = 'Password must be at least 6 characters.';
-    message.style.color = '#dc2626';
-    return;
-  }
+      if (password.length < 6) {
+        message.textContent = 'Password must be at least 6 characters.';
+        message.style.color = '#dc2626';
+        return;
+      }
 
-  message.textContent = 'Registration successful!';
-  message.style.color = '#059669';
-});
-</script>
+      message.textContent = 'Registration successful!';
+      message.style.color = '#059669';
+    });
+  </script>
 </body>
+
 </html>

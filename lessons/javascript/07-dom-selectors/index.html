@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,29 +8,31 @@
   <link rel="stylesheet" href="../../../assets/css/main.css">
 
 </head>
+
 <body>
   <main class="container lesson-layout">
     <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
     <h1>JavaScript 07 - DOM Selectors</h1>
 
-<section class="card">
-  <h2 id="title">Original Title</h2>
-  <p class="message">Original message</p>
-  <button class="button" onclick="changeContent()">Change Content</button>
-</section>
+    <section class="card">
+      <h2 id="title">Original Title</h2>
+      <p class="message">Original message</p>
+      <button class="button" onclick="changeContent()">Change Content</button>
+    </section>
 
   </main>
   <script>
-function changeContent() {
-  const title = document.getElementById('title');
-  const message = document.querySelector('.message');
+    function changeContent() {
+      const title = document.getElementById('title');
+      const message = document.querySelector('.message');
 
-  title.textContent = 'Title changed by JavaScript';
-  message.textContent = 'DOM means Document Object Model. JS can change HTML content and style.';
-  message.style.background = '#dbeafe';
-  message.style.padding = '14px';
-  message.style.borderRadius = '12px';
-}
-</script>
+      title.textContent = 'Title changed by JavaScript';
+      message.textContent = 'DOM means Document Object Model. JS can change HTML content and style.';
+      message.style.background = '#dbeafe';
+      message.style.padding = '14px';
+      message.style.borderRadius = '12px';
+    }
+  </script>
 </body>
+
 </html>

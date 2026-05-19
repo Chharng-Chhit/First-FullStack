@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +8,115 @@
   <link rel="stylesheet" href="../../assets/css/main.css">
 
 </head>
+
 <body>
   <main class="container lesson-layout">
     <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
     <h1>Project 02 - Responsive Portfolio</h1>
 
-<nav class="portfolio-nav">
-  <h2>MyPortfolio</h2>
-  <div><a href="#work">Work</a><a href="#contact">Contact</a></div>
-</nav>
-<section class="portfolio-hero">
-  <div>
-    <h1>Hello, I am a Web Developer</h1>
-    <p>I build clean and responsive websites using HTML, CSS, and JavaScript.</p>
-    <a href="#work">View Work</a>
-  </div>
-  <img src="../../assets/images/logo.svg" alt="Portfolio illustration">
-</section>
-<section id="work" class="portfolio-grid">
-  <article><h3>School Website</h3><p>Responsive landing page.</p></article>
-  <article><h3>Shop Page</h3><p>Product card layout.</p></article>
-  <article><h3>Dashboard</h3><p>Simple admin UI.</p></article>
-</section>
-<style>
-.portfolio-nav { display:flex; justify-content:space-between; align-items:center; background:white; padding:16px 24px; border-radius:18px; margin-bottom:24px; }
-.portfolio-nav a { margin-left:16px; text-decoration:none; color:#111827; font-weight:700; }
-.portfolio-hero { display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center; background:#111827; color:white; padding:48px; border-radius:28px; }
-.portfolio-hero h1 { font-size:clamp(36px, 6vw, 70px); line-height:1; }
-.portfolio-hero img { width:100%; border-radius:22px; }
-.portfolio-hero a { background:white; color:#111827; padding:12px 18px; border-radius:12px; text-decoration:none; font-weight:800; display:inline-block; }
-.portfolio-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; margin-top:24px; }
-.portfolio-grid article { background:white; padding:24px; border-radius:20px; }
-@media (max-width:760px){ .portfolio-hero, .portfolio-grid { grid-template-columns:1fr; } .portfolio-nav { flex-direction:column; gap:12px; } }
-</style>
+    <nav class="portfolio-nav">
+      <h2>MyPortfolio</h2>
+      <div><a href="#work">Work</a><a href="#contact">Contact</a></div>
+    </nav>
+    <section class="portfolio-hero">
+      <div>
+        <h1>Hello, I am a Web Developer</h1>
+        <p>I build clean and responsive websites using HTML, CSS, and JavaScript.</p>
+        <a href="#work">View Work</a>
+      </div>
+      <img src="../../assets/images/logo.svg" alt="Portfolio illustration">
+    </section>
+    <section id="work" class="portfolio-grid">
+      <article>
+        <h3>School Website</h3>
+        <p>Responsive landing page.</p>
+      </article>
+      <article>
+        <h3>Shop Page</h3>
+        <p>Product card layout.</p>
+      </article>
+      <article>
+        <h3>Dashboard</h3>
+        <p>Simple admin UI.</p>
+      </article>
+    </section>
+    <style>
+      .portfolio-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        padding: 16px 24px;
+        border-radius: 18px;
+        margin-bottom: 24px;
+      }
+
+      .portfolio-nav a {
+        margin-left: 16px;
+        text-decoration: none;
+        color: #111827;
+        font-weight: 700;
+      }
+
+      .portfolio-hero {
+        display: grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap: 24px;
+        align-items: center;
+        background: #111827;
+        color: white;
+        padding: 48px;
+        border-radius: 28px;
+      }
+
+      .portfolio-hero h1 {
+        font-size: clamp(36px, 6vw, 70px);
+        line-height: 1;
+      }
+
+      .portfolio-hero img {
+        width: 100%;
+        border-radius: 22px;
+      }
+
+      .portfolio-hero a {
+        background: white;
+        color: #111827;
+        padding: 12px 18px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 800;
+        display: inline-block;
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 24px;
+      }
+
+      .portfolio-grid article {
+        background: white;
+        padding: 24px;
+        border-radius: 20px;
+      }
+
+      @media (max-width:760px) {
+
+        .portfolio-hero,
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .portfolio-nav {
+          flex-direction: column;
+          gap: 12px;
+        }
+      }
+    </style>
 
   </main>
 </body>
+
 </html>

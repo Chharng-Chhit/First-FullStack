@@ -1,6 +1,39 @@
-.inline-demo { background: #fde68a; padding: 8px; }
-.block-demo { background: #bfdbfe; padding: 12px; margin: 12px 0; }
-.inline-block-demo { display: inline-block; background: #bbf7d0; padding: 16px; margin: 8px; border-radius: 10px; }
-.position-area { min-height: 180px; }
-.relative-box { position: relative; background: #e0e7ff; padding: 40px; border-radius: 14px; }
-.absolute-badge { position: absolute; top: -12px; right: 18px; background: #ef4444; color: #fff; padding: 8px 12px; border-radius: 999px; }
+.inline-demo {
+    background: #fde68a;
+    padding: 8px;
+}
+
+.block-demo {
+    background: #bfdbfe;
+    padding: 12px;
+    margin: 12px 0;
+}
+
+.inline-block-demo {
+    display: inline-block;
+    background: #bbf7d0;
+    padding: 16px;
+    margin: 8px;
+    border-radius: 10px;
+}
+
+.position-area {
+    min-height: 180px;
+}
+
+.relative-box {
+    position: relative;
+    background: #e0e7ff;
+    padding: 40px;
+    border-radius: 14px;
+}
+
+.absolute-badge {
+    position: absolute;
+    top: -12px;
+    right: 18px;
+    background: #ef4444;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 999px;
+}

@@ -1,4 +1,30 @@
-.flex-nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #111827; padding: 14px; border-radius: 14px; }
-.flex-nav a { color: white; text-decoration: none; font-weight: bold; }
-.flex-cards { display: flex; gap: 16px; flex-wrap: wrap; }
-.flex-cards div { flex: 1 1 180px; background: #dbeafe; padding: 40px; border-radius: 14px; text-align: center; font-weight: bold; }
+.flex-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    background: #111827;
+    padding: 14px;
+    border-radius: 14px;
+}
+
+.flex-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.flex-cards {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.flex-cards div {
+    flex: 1 1 180px;
+    background: #dbeafe;
+    padding: 40px;
+    border-radius: 14px;
+    text-align: center;
+    font-weight: bold;
+}

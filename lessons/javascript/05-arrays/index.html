@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,42 +8,44 @@
   <link rel="stylesheet" href="../../../assets/css/main.css">
 
 </head>
+
 <body>
   <main class="container lesson-layout">
     <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
     <h1>JavaScript 05 - Arrays</h1>
 
-<section class="card">
-  <h2>Student List</h2>
-  <input id="studentName" placeholder="Enter student name">
-  <button class="button" onclick="addStudent()">Add Student</button>
-  <button class="button" onclick="removeLastStudent()">Remove Last</button>
-  <ul id="studentList" class="demo-box"></ul>
-</section>
+    <section class="card">
+      <h2>Student List</h2>
+      <input id="studentName" placeholder="Enter student name">
+      <button class="button" onclick="addStudent()">Add Student</button>
+      <button class="button" onclick="removeLastStudent()">Remove Last</button>
+      <ul id="studentList" class="demo-box"></ul>
+    </section>
 
   </main>
   <script>
-let students = ['Dara', 'Sophea', 'Vanna'];
+    let students = ['Dara', 'Sophea', 'Vanna'];
 
-function renderStudents() {
-  const list = document.getElementById('studentList');
-  list.innerHTML = students.map((name, index) => `<li>${index + 1}. ${name}</li>`).join('');
-}
+    function renderStudents() {
+      const list = document.getElementById('studentList');
+      list.innerHTML = students.map((name, index) => `<li>${index + 1}. ${name}</li>`).join('');
+    }
 
-function addStudent() {
-  const input = document.getElementById('studentName');
-  if (input.value.trim() !== '') {
-    students.push(input.value.trim());
-    input.value = '';
+    function addStudent() {
+      const input = document.getElementById('studentName');
+      if (input.value.trim() !== '') {
+        students.push(input.value.trim());
+        input.value = '';
+        renderStudents();
+      }
+    }
+
+    function removeLastStudent() {
+      students.pop();
+      renderStudents();
+    }
     renderStudents();
-  }
-}
-
-function removeLastStudent() {
-  students.pop();
-  renderStudents();
-}
-renderStudents();
-</script>
+  </script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +8,85 @@
   <link rel="stylesheet" href="../../assets/css/main.css">
 
 </head>
+
 <body>
   <main class="container lesson-layout">
     <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
     <h1>Project 03 - Product Page</h1>
 
-<section class="product">
-  <div class="product-image"><img src="../../assets/images/logo.svg" alt="Product"></div>
-  <div class="product-info">
-    <p class="category">Online Course</p>
-    <h1>Complete Web Design Course</h1>
-    <p>Learn HTML, CSS, and JavaScript with practical examples and real projects.</p>
-    <h2>$49</h2>
-    <label>Quantity</label>
-    <input id="qty" type="number" value="1" min="1">
-    <button onclick="addToCart()">Add to Cart</button>
-    <p id="cartMessage"></p>
-  </div>
-</section>
-<style>
-.product { display:grid; grid-template-columns:1fr 1fr; gap:28px; background:white; border-radius:28px; padding:28px; }
-.product-image { background:#eef2ff; border-radius:24px; display:flex; align-items:center; justify-content:center; padding:32px; }
-.product-image img { width:100%; max-width:360px; }
-.category { color:#4f46e5; font-weight:800; text-transform:uppercase; }
-.product h1 { font-size:44px; line-height:1.05; }
-.product button { background:#4f46e5; color:white; border:0; padding:14px 22px; border-radius:12px; margin-top:16px; cursor:pointer; font-weight:800; }
-@media(max-width:760px){ .product { grid-template-columns:1fr; } }
-</style>
-<script>
-function addToCart() {
-  const qty = document.getElementById('qty').value;
-  document.getElementById('cartMessage').textContent = qty + ' item(s) added to cart.';
-}
-</script>
+    <section class="product">
+      <div class="product-image"><img src="../../assets/images/logo.svg" alt="Product"></div>
+      <div class="product-info">
+        <p class="category">Online Course</p>
+        <h1>Complete Web Design Course</h1>
+        <p>Learn HTML, CSS, and JavaScript with practical examples and real projects.</p>
+        <h2>$49</h2>
+        <label>Quantity</label>
+        <input id="qty" type="number" value="1" min="1">
+        <button onclick="addToCart()">Add to Cart</button>
+        <p id="cartMessage"></p>
+      </div>
+    </section>
+    <style>
+      .product {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        background: white;
+        border-radius: 28px;
+        padding: 28px;
+      }
+
+      .product-image {
+        background: #eef2ff;
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+      }
+
+      .product-image img {
+        width: 100%;
+        max-width: 360px;
+      }
+
+      .category {
+        color: #4f46e5;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .product h1 {
+        font-size: 44px;
+        line-height: 1.05;
+      }
+
+      .product button {
+        background: #4f46e5;
+        color: white;
+        border: 0;
+        padding: 14px 22px;
+        border-radius: 12px;
+        margin-top: 16px;
+        cursor: pointer;
+        font-weight: 800;
+      }
+
+      @media(max-width:760px) {
+        .product {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <script>
+      function addToCart() {
+        const qty = document.getElementById('qty').value;
+        document.getElementById('cartMessage').textContent = qty + ' item(s) added to cart.';
+      }
+    </script>
 
   </main>
 </body>
+
 </html>
