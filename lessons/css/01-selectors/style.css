@@ -1,5 +1,5 @@
 p {
-    color: #334155;
+    color: #f50000;
 }
 
 .highlight {
@@ -10,7 +10,8 @@ p {
 
 #special-text {
     color: #4f46e5;
-    font-weight: bold;
+    font-weight: 1000;
+    font-size: 100px;
 }
 
 .box {

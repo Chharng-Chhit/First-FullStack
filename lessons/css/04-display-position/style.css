@@ -22,7 +22,7 @@
 }
 
 .relative-box {
-    position: relative;
+    /* position: relative; */
     background: #e0e7ff;
     padding: 40px;
     border-radius: 14px;
@@ -30,8 +30,8 @@
 
 .absolute-badge {
     position: absolute;
-    top: -12px;
-    right: 18px;
+    /* top: -12px;
+    right: 18px; */
     background: #ef4444;
     color: #fff;
     padding: 8px 12px;

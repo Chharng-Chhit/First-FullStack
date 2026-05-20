@@ -16,6 +16,11 @@
     .responsive-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .responsive-grid article {
+        background: #ea0c0c;
+    }
+
 }
 
 @media (max-width: 520px) {
