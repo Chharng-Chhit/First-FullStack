@@ -1,106 +1,21 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import api from './services/api'
-
-// Import our new modular components
-import HeroHeader from './components/HeroHeader.vue'
-import TaskStats from './components/TaskStats.vue'
-import TaskForm from './components/TaskForm.vue'
-import TaskList from './components/TaskList.vue'
-
-// Global state
-const tasks = ref([])
-const loading = ref(false)
-const errorMessage = ref('')
-
-const filterStatus = ref('all')
-const search = ref('')
-
-// API Methods
-const fetchTasks = async () => {
-  loading.value = true
-  errorMessage.value = ''
-
-  try {
-    const response = await api.get('/tasks', {
-      params: {
-        status: filterStatus.value,
-        search: search.value,
-      },
-    })
-
-    tasks.value = response.data.data
-  } catch (error) {
-    errorMessage.value = 'Cannot load tasks. Please check Laravel API and CORS.'
-    console.error(error)
-  } finally {
-    loading.value = false
-  }
-}
-
-const createTask = async (formData) => {
-  try {
-    await api.post('/tasks', formData)
-    await fetchTasks()
-  } catch (error) {
-    errorMessage.value = 'Cannot create task. Please check validation.'
-    console.error(error)
-  }
-}
-
-const toggleStatus = async (task) => {
-  const nextStatus = task.status === 'completed' ? 'pending' : 'completed'
-
-  try {
-    await api.patch(`/tasks/${task.id}`, {
-      status: nextStatus,
-    })
-
-    await fetchTasks()
-  } catch (error) {
-    errorMessage.value = 'Cannot update task status.'
-    console.error(error)
-  }
-}
-
-const deleteTask = async (task) => {
-  try {
-    await api.delete(`/tasks/${task.id}`)
-    await fetchTasks()
-  } catch (error) {
-    errorMessage.value = 'Cannot delete task.'
-    console.error(error)
-  }
-}
-
-// Initial fetch when the app starts
-onMounted(() => {
-  fetchTasks()
-})
+// App.vue is now just a layout component containing navigation and router-view!
 </script>
 
 <template>
   <main class="page">
-    <HeroHeader />
+    <nav class="main-nav">
+      <router-link to="/">Tasks</router-link>
+      <router-link to="/about">About</router-link>
+    </nav>
 
-    <TaskStats :tasks="tasks" />
-
-    <TaskForm @create="createTask" />
-
-    <TaskList
-      :tasks="tasks"
-      :loading="loading"
-      :error-message="errorMessage"
-      v-model:search="search"
-      v-model:filterStatus="filterStatus"
-      @fetch="fetchTasks"
-      @toggle-status="toggleStatus"
-      @delete-task="deleteTask"
-    />
+    <!-- Vue Router will inject the current page component here -->
+    <router-view />
   </main>
 </template>
 
 <style>
+/* Global Styles remain here */
 * {
   box-sizing: border-box;
 }
@@ -183,5 +98,33 @@ select:focus {
 
 .muted {
   color: #6b7280;
+}
+
+/* Navigation Styles */
+.main-nav {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5eaf2;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #6b7280;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.main-nav a:hover {
+  background: #f8fafc;
+  color: #172033;
+}
+
+.main-nav a.router-link-active {
+  background: #42b883;
+  color: white;
 }
 </style>
