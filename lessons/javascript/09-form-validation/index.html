@@ -34,6 +34,7 @@
     const message = document.getElementById('message');
 
     form.addEventListener('submit', function (event) {
+      // Prevents the default browser behavior of reloading the page upon form submission
       event.preventDefault();
 
       const name = document.getElementById('name').value.trim();

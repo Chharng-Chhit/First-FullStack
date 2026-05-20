@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safe HTML & JavaScript Injection Awareness Lab</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+      color: white;
+      padding: 32px 20px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 16px 40px;
+    }
+
+    .warning {
+      border-left: 6px solid #dc2626;
+      background: #fff1f2;
+      padding: 16px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    textarea,
+    input {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 12px;
+      font-family: inherit;
+      font-size: 15px;
+      margin-bottom: 12px;
+      background: #fff;
+    }
+
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 700;
+      margin: 4px 4px 4px 0;
+    }
+
+    .btn-danger {
+      background: #dc2626;
+      color: white;
+    }
+
+    .btn-safe {
+      background: #16a34a;
+      color: white;
+    }
+
+    .btn-info {
+      background: #2563eb;
+      color: white;
+    }
+
+    .output {
+      border: 1px dashed #94a3b8;
+      background: #f8fafc;
+      border-radius: 12px;
+      min-height: 90px;
+      padding: 14px;
+      margin-top: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    code,
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 10px;
+      padding: 12px;
+      display: block;
+      overflow-x: auto;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #075985;
+      font-size: 13px;
+      margin: 3px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      border: 1px solid #e5e7eb;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef2ff;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Safe HTML & JavaScript Injection Awareness Lab</h1>
+    <p>For local classroom learning only — learn how unsafe rendering happens and how to prevent it.</p>
+  </header>
+
+  <main>
+    <section class="warning">
+      <strong>Teacher note:</strong> This lesson is defensive. Do not test injection on real websites or systems you do
+      not own. This file uses harmless examples to teach why user input must be validated and escaped.
+    </section>
+
+    <section class="card">
+      <h2>1. Main Concept</h2>
+      <p>
+        Injection happens when an application treats user input as code or HTML instead of normal text.
+        In frontend JavaScript, the common dangerous sink is <strong>innerHTML</strong>.
+      </p>
+      <div>
+        <span class="pill">Unsafe: innerHTML</span>
+        <span class="pill">Safer: textContent</span>
+        <span class="pill">Avoid: eval()</span>
+        <span class="pill">Validate input</span>
+        <span class="pill">Escape output</span>
+      </div>
+    </section>
+
+    <section class="grid" style="margin-top: 20px;">
+      <div class="card">
+        <h2>2. Unsafe Demo: innerHTML</h2>
+        <p>This box renders input as HTML. Use only the harmless sample buttons below.</p>
+        <textarea id="unsafeInput" rows="4" placeholder="Type safe HTML demo text here"></textarea>
+        <button class="btn-info" onclick="fillUnsafe('<b>Hello student</b>')">Sample: bold text</button>
+        <button class="btn-info" onclick="fillUnsafe('<h3>Large title</h3>')">Sample: title</button>
+        <button class="btn-info" onclick="fillUnsafe('<span style=&quot;color: blue;&quot;>Blue text</span>')">Sample:
+          styled text</button>
+        <button class="btn-danger" id="renderUnsafe">Render with innerHTML</button>
+        <div id="unsafeOutput" class="output"></div>
+      </div>
+
+      <div class="card">
+        <h2>3. Safe Demo: textContent</h2>
+        <p>This box displays input as plain text, not HTML.</p>
+        <textarea id="safeInput" rows="4" placeholder="Type the same text here"></textarea>
+        <button class="btn-info" onclick="fillSafe('<b>Hello student</b>')">Sample: bold text</button>
+        <button class="btn-info" onclick="fillSafe('<h3>Large title</h3>')">Sample: title</button>
+        <button class="btn-info" onclick="fillSafe('<span style=&quot;color: blue;&quot;>Blue text</span>')">Sample:
+          styled text</button>
+        <button class="btn-safe" id="renderSafe">Render with textContent</button>
+        <div id="safeOutput" class="output"></div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 20px;">
+      <h2>4. Code Comparison</h2>
+      <div class="grid">
+        <div>
+          <h3>Unsafe pattern</h3>
+          <pre><code>// Do not use with user input
+result.innerHTML = userInput</code></pre>
+        </div>
+        <div>
+          <h3>Safe pattern</h3>
+          <pre><code>// Better for displaying user text
+result.textContent = userInput</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 20px;">
+      <h2>5. JavaScript Risk Patterns to Avoid</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Risk Case</th>
+            <th>Dangerous Pattern</th>
+            <th>Safe Practice</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HTML rendering</td>
+            <td><code>element.innerHTML = userInput</code></td>
+            <td><code>element.textContent = userInput</code></td>
+          </tr>
+          <tr>
+            <td>Inline event attributes</td>
+            <td><code>&lt;button onclick="..."&gt;</code></td>
+            <td><code>button.addEventListener('click', handler)</code></td>
+          </tr>
+          <tr>
+            <td>Running strings as code</td>
+            <td><code>eval(userInput)</code></td>
+            <td>Never run user input as code</td>
+          </tr>
+          <tr>
+            <td>Unsafe URLs</td>
+            <td><code>link.href = userInput</code> without validation</td>
+            <td>Allow only trusted protocols like <code>https://</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="grid" style="margin-top: 20px;">
+      <div class="card">
+        <h2>6. Safe URL Validation Example</h2>
+        <input id="urlInput" placeholder="Enter URL, e.g. https://example.com" />
+        <button class="btn-safe" id="validateUrl">Validate URL</button>
+        <div id="urlResult" class="output"></div>
+        <pre><code>function isSafeUrl(url) {
+  return url.startsWith('https://') || url.startsWith('http://')
+}</code></pre>
+      </div>
+
+      <div class="card">
+        <h2>7. Simulated Impact — Not Injection</h2>
+        <p>This button shows what a page change could look like, but it is hardcoded by the teacher, not injected by
+          user input.</p>
+        <button class="btn-danger" id="simulateImpact">Simulate page defacement</button>
+        <button class="btn-safe" id="resetImpact">Reset</button>
+        <div id="impactBox" class="output">Normal page content.</div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 20px;">
+      <h2>8. Student Exercise</h2>
+      <ol>
+        <li>Type <code>&lt;b&gt;Hello&lt;/b&gt;</code> in both boxes.</li>
+        <li>Compare <code>innerHTML</code> and <code>textContent</code>.</li>
+        <li>Change unsafe code to safe code.</li>
+        <li>Explain why user input must never be trusted.</li>
+      </ol>
+    </section>
+  </main>
+
+  <script>
+    const unsafeInput = document.querySelector('#unsafeInput')
+    const unsafeOutput = document.querySelector('#unsafeOutput')
+    const safeInput = document.querySelector('#safeInput')
+    const safeOutput = document.querySelector('#safeOutput')
+
+    function fillUnsafe(value) {
+      unsafeInput.value = value
+    }
+
+    function fillSafe(value) {
+      safeInput.value = value
+    }
+
+    document.querySelector('#renderUnsafe').addEventListener('click', function () {
+      // Unsafe on purpose for local classroom demonstration only.
+      unsafeOutput.innerHTML = unsafeInput.value
+    })
+
+    document.querySelector('#renderSafe').addEventListener('click', function () {
+      // Safer: browser displays text, not HTML.
+      safeOutput.textContent = safeInput.value
+    })
+
+    function isSafeUrl(url) {
+      return url.startsWith('https://') || url.startsWith('http://')
+    }
+
+    document.querySelector('#validateUrl').addEventListener('click', function () {
+      const url = document.querySelector('#urlInput').value.trim()
+      const result = document.querySelector('#urlResult')
+
+      if (isSafeUrl(url)) {
+        result.textContent = 'Safe-looking URL format: ' + url
+      } else {
+        result.textContent = 'Blocked: only http:// or https:// URLs are allowed.'
+      }
+    })
+
+    document.querySelector('#simulateImpact').addEventListener('click', function () {
+      const impactBox = document.querySelector('#impactBox')
+      impactBox.style.background = '#fee2e2'
+      impactBox.style.color = '#991b1b'
+      impactBox.textContent = 'Simulated impact: page content changed. This is why unsafe rendering is dangerous.'
+    })
+
+    document.querySelector('#resetImpact').addEventListener('click', function () {
+      const impactBox = document.querySelector('#impactBox')
+      impactBox.style.background = '#f8fafc'
+      impactBox.style.color = '#1f2937'
+      impactBox.textContent = 'Normal page content.'
+    })
+  </script>
+</body>
+
+</html>
