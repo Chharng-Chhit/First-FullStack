@@ -1,4 +1,46 @@
 services:
+
+  # ── Laravel API ──────────────────────────────────────────────
+  laravel-api:
+    build:
+      context: ./laravel-api
+      dockerfile: Dockerfile
+      target: production
+    container_name: task_app_api
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    environment:
+      APP_NAME: "Laravel API"
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_URL: http://localhost:8000
+      # ── Database ──────────────────────────────────────────────
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: task_app
+      DB_USERNAME: task_user
+      DB_PASSWORD: secret
+      # ── Session / Cache / Queue ───────────────────────────────
+      SESSION_DRIVER: database
+      CACHE_STORE: database
+      QUEUE_CONNECTION: database
+      LOG_CHANNEL: stderr
+      # ── API / CORS / Sanctum ──────────────────────────────────
+      # Domains that are allowed to receive Sanctum cookies
+      SANCTUM_STATEFUL_DOMAINS: "localhost:5173,localhost:3000,localhost:8000"
+      # Origins allowed for CORS (comma-separated, no trailing slash)
+      CORS_ALLOWED_ORIGINS: "http://localhost:5173,http://localhost:3000"
+    depends_on:
+      - mysql
+    volumes:
+      # Persist uploaded files & logs; DO NOT mount source in prod
+      - laravel_storage:/var/www/html/storage
+    networks:
+      - task_network
+
+  # ── MySQL 8.4 ────────────────────────────────────────────────
   mysql:
     image: mysql:8.4
     container_name: task_app_mysql
@@ -12,7 +54,10 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - task_network
 
+  # ── phpMyAdmin ───────────────────────────────────────────────
   phpmyadmin:
     image: phpmyadmin:latest
     container_name: task_app_phpmyadmin
@@ -24,6 +69,14 @@ services:
       PMA_PORT: 3306
     depends_on:
       - mysql
+    networks:
+      - task_network
 
 volumes:
   mysql_data:
+  laravel_storage:
+
+
+networks:
+  task_network:
+    driver: bridge
