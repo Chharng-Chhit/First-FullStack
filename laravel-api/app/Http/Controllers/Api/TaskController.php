@@ -37,28 +37,28 @@ class TaskController extends Controller
 
     public function store(Request $request): JsonResponse
     {
-        // try {
-        //     $data = $request->validate([
-        //         'title' => ['required', 'string', 'max:255'],
-        //         'description' => ['nullable', 'string'],
-        //         'status' => ['nullable', 'in:pending,completed'],
-        //         'due_date' => ['nullable', 'date'],
-        //         'priority' => ['nullable', 'in:low,medium,high'],
-        //     ]);
-        // } catch (ValidationException $e) {
-        //     return response()->json([
-        //         'message' => 'Validation error',
-        //         'errors' => $e->errors()
-        //     ], 422);
-        // }
+        try {
+            $data = $request->validate([
+                'title' => ['required', 'string', 'max:255'],
+                'description' => ['nullable', 'string'],
+                'status' => ['nullable', 'in:pending,completed'],
+                'due_date' => ['nullable', 'date'],
+                'priority' => ['nullable', 'in:low,medium,high'],
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Validation error',
+                'errors' => $e->errors()
+            ], 422);
+        }
 
-        $data = [
-            "title" => 'task1',
-            "description" => 'task1',
-            "status" => 'pending',
-            "due_date" => '2022-01-01',
-            "priority" => 'low',
-        ];
+        // $data = [
+        //     "title" => 'task1',
+        //     "description" => 'task1',
+        //     "status" => 'pending',
+        //     "due_date" => '2022-01-01',
+        //     "priority" => 'low',
+        // ];
 
         $task = Task::create($data);
 
