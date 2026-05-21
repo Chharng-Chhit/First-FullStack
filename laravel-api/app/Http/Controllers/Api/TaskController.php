@@ -12,20 +12,22 @@ class TaskController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $status = $request->input('status');
-        $search = $request->input('search');
+        // $status = $request->input('status');
+        // $search = $request->input('search');
 
-        $query = Task::query()->orderBy('id', 'desc');
+        // $query = Task::query()->orderBy('id', 'desc');
 
-        if ($status && $status !== 'all') {
-            $query->where('status', $status);
-        }
+        // if ($status && $status !== 'all') {
+        //     $query->where('status', $status);
+        // }
 
-        if ($search) {
-            $query->where('title', 'like', '%' . $search . '%');
-        }
+        // if ($search) {
+        //     $query->where('title', 'like', '%' . $search . '%');
+        // }
 
-        $tasks = $query->get();
+        // $tasks = $query->get();
+
+        $tasks = Task::get();
 
         return response()->json([
             'data' => $tasks,
@@ -35,20 +37,28 @@ class TaskController extends Controller
 
     public function store(Request $request): JsonResponse
     {
-        try {
-            $data = $request->validate([
-                'title' => ['required', 'string', 'max:255'],
-                'description' => ['nullable', 'string'],
-                'status' => ['nullable', 'in:pending,completed'],
-                'due_date' => ['nullable', 'date'],
-                'priority' => ['nullable', 'in:low,medium,high'],
-            ]);
-        } catch (ValidationException $e) {
-            return response()->json([
-                'message' => 'Validation error',
-                'errors' => $e->errors()
-            ], 422);
-        }
+        // try {
+        //     $data = $request->validate([
+        //         'title' => ['required', 'string', 'max:255'],
+        //         'description' => ['nullable', 'string'],
+        //         'status' => ['nullable', 'in:pending,completed'],
+        //         'due_date' => ['nullable', 'date'],
+        //         'priority' => ['nullable', 'in:low,medium,high'],
+        //     ]);
+        // } catch (ValidationException $e) {
+        //     return response()->json([
+        //         'message' => 'Validation error',
+        //         'errors' => $e->errors()
+        //     ], 422);
+        // }
+
+        $data = [
+            "title" => 'task1',
+            "description" => 'task1',
+            "status" => 'pending',
+            "due_date" => '2022-01-01',
+            "priority" => 'low',
+        ];
 
         $task = Task::create($data);
 

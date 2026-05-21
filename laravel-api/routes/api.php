@@ -11,7 +11,7 @@ Route::get('/health', function () {
 });
 
 
-Route::get('tasks', [TaskController::class, 'index']);
+Route::get('tasks', [TaskController::class, 'index']); // /api/tasks
 Route::post('tasks', [TaskController::class, 'store']);
 Route::get('tasks/{id}', [TaskController::class, 'show']);
 Route::put('tasks/{id}', [TaskController::class, 'update']);

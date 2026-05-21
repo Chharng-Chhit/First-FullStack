@@ -25,5 +25,18 @@ services:
     depends_on:
       - mysql
 
+  api:
+    build:
+      context: ./laravel-api
+      dockerfile: Dockerfile
+    container_name: task_app_api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./laravel-api:/app
+    depends_on:
+      - mysql
+
 volumes:
   mysql_data:
