@@ -12,18 +12,23 @@ class TaskController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $query = Task::query()->latest();
+        $status = $request->input('status');
+        $search = $request->input('search');
 
-        if ($request->filled('status') && $request->status !== 'all') {
-            $query->where('status', $request->status);
+        $query = Task::query()->orderBy('id', 'desc');
+
+        if ($status && $status !== 'all') {
+            $query->where('status', $status);
         }
 
-        if ($request->filled('search')) {
-            $query->where('title', 'like', '%' . $request->search . '%');
+        if ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
         }
+
+        $tasks = $query->get();
 
         return response()->json([
-            'data' => $query->get(),
+            'data' => $tasks,
             'message' => 'Tasks loaded successfully',
         ]);
     }
@@ -53,16 +58,20 @@ class TaskController extends Controller
         ], 201);
     }
 
-    public function show(Task $task): JsonResponse
+    public function show($id): JsonResponse
     {
+        $task = Task::findOrFail($id);
+
         return response()->json([
             'data' => $task,
             'message' => 'Task loaded successfully',
         ]);
     }
 
-    public function update(Request $request, Task $task): JsonResponse
+    public function update(Request $request, $id): JsonResponse
     {
+        $task = Task::findOrFail($id);
+
         try {
             $data = $request->validate([
                 'title' => ['sometimes', 'required', 'string', 'max:255'],
@@ -86,8 +95,10 @@ class TaskController extends Controller
         ]);
     }
 
-    public function destroy(Task $task): JsonResponse
+    public function destroy($id): JsonResponse
     {
+        $task = Task::findOrFail($id);
+
         $task->delete();
 
         return response()->json([
