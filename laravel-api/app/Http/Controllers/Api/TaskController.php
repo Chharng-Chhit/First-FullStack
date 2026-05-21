@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Task;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class TaskController extends Controller
 {
@@ -29,13 +30,20 @@ class TaskController extends Controller
 
     public function store(Request $request): JsonResponse
     {
-        $data = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string'],
-            'status' => ['nullable', 'in:pending,completed'],
-            'due_date' => ['nullable', 'date'],
-            'priority' => ['nullable', 'in:low,medium,high'],
-        ]);
+        try {
+            $data = $request->validate([
+                'title' => ['required', 'string', 'max:255'],
+                'description' => ['nullable', 'string'],
+                'status' => ['nullable', 'in:pending,completed'],
+                'due_date' => ['nullable', 'date'],
+                'priority' => ['nullable', 'in:low,medium,high'],
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Validation error',
+                'errors' => $e->errors()
+            ], 422);
+        }
 
         $task = Task::create($data);
 
@@ -55,13 +63,20 @@ class TaskController extends Controller
 
     public function update(Request $request, Task $task): JsonResponse
     {
-        $data = $request->validate([
-            'title' => ['sometimes', 'required', 'string', 'max:255'],
-            'description' => ['nullable', 'string'],
-            'status' => ['sometimes', 'required', 'in:pending,completed'],
-            'due_date' => ['nullable', 'date'],
-            'priority' => ['nullable', 'in:low,medium,high'],
-        ]);
+        try {
+            $data = $request->validate([
+                'title' => ['sometimes', 'required', 'string', 'max:255'],
+                'description' => ['nullable', 'string'],
+                'status' => ['sometimes', 'required', 'in:pending,completed'],
+                'due_date' => ['nullable', 'date'],
+                'priority' => ['nullable', 'in:low,medium,high'],
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Validation error',
+                'errors' => $e->errors()
+            ], 422);
+        }
 
         $task->update($data);
 
