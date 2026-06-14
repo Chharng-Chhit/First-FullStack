@@ -1,64 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTML 05 - Tables</title>
   <link rel="stylesheet" href="../../../assets/css/main.css">
-
 </head>
-
 <body>
-  <main class="container lesson-layout">
-    <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
-    <h1>HTML 05 - Tables</h1>
-
-    <section class="card">
-      <h2>Student Score Table</h2>
-      <table border="1" cellpadding="10" cellspacing="0" style="width:100%; border-collapse: collapse;">
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Subject</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-          <tr>
-            <td>1</td>
-            <td>Dara</td>
-            <td>HTML</td>
-            <td>90</td>
-          </tr>
-
-          <tr>
-            <td>2</td>
-            <td>Sophea</td>
-            <td>CSS</td>
-            <td>85</td>
-          </tr>
-
-          <tr>
-            <td>3</td>
-            <td>Vanna</td>
-            <td>JavaScript</td>
-            <td>88</td>
-          </tr>
-
-          <tr>
-            <td colspan="2">4</td>
-            <td colspan="2">Chhit</td>
-          </tr>
-
-        </tbody>
-      </table>
-    </section>
-
-  </main>
+  <h2>Student Score Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Subject</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Dara</td>
+        <td>HTML</td>
+        <td>90</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Sophea</td>
+        <td>CSS</td>
+        <td>85</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Vanna</td>
+        <td>JavaScript</td>
+        <td>88</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">Class Average Score</td>
+        <td>87.6</td>
+      </tr>
+    </tfoot>
+  </table>
 </body>
-
 </html>

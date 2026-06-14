@@ -1,50 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTML 06 - Forms</title>
   <link rel="stylesheet" href="../../../assets/css/main.css">
-
 </head>
-
 <body>
-  <main class="container lesson-layout">
-    <a class="back-link" href="../../../index.html">← Back to All Lessons</a>
-    <h1>HTML 06 - Forms</h1>
+  <h2>Registration Form</h2>
+  <form action="#" method="post">
+    <p>
+      <label for="name">Full Name</label><br>
+      <input id="name" name="fullname" type="text" placeholder="Enter your name" required>
+    </p>
 
-    <section class="card">
-      <h2>Registration Form</h2>
-      <form method="post">
-        <label for="name">Full name</label>
-        <input id="name" type="text" placeholder="Enter your name">
+    <p>
+      <label for="email">Email Address</label><br>
+      <input id="email" name="email" type="email" placeholder="example@gmail.com" required>
+    </p>
 
-        <label for="email">Email</label>
-        <input id="email" type="email" placeholder="example@gmail.com">
+    <p>
+      <label>Gender</label><br>
+      <label><input type="radio" name="gender" value="male" checked> Male</label>
+      <label><input type="radio" name="gender" value="female"> Female</label>
+      <label><input type="radio" name="gender" value="other"> Other</label>
+    </p>
 
-        <label for="gender">Gender</label>
-        <select id="gender">
-          <option value="">Choose gender</option>
-          <option>Male</option>
-          <option>Female</option>
-        </select>
+    <p>
+      <label for="course">Preferred Course</label><br>
+      <select id="course" name="course">
+        <option value="">Choose a course</option>
+        <option value="html">HTML Basic</option>
+        <option value="css">CSS Grid & Flexbox</option>
+        <option value="js">JavaScript DOM</option>
+      </select>
+    </p>
 
-        <label>Skill</label>
-        <label><input type="checkbox" style="width:auto;"> HTML</label>
-        <label><input type="checkbox" style="width:auto;"> CSS</label>
-        <label><input type="checkbox" style="width:auto;"> JavaScript</label>
+    <p>
+      <label>Skills to Learn</label><br>
+      <label><input type="checkbox" name="skills" value="html" checked> HTML Basics</label>
+      <label><input type="checkbox" name="skills" value="css"> CSS Styling</label>
+      <label><input type="checkbox" name="skills" value="javascript"> JavaScript Interactive</label>
+    </p>
 
-        <label for="message">Message</label>
-        <textarea id="message" rows="4" placeholder="Write something..."></textarea>
+    <p>
+      <label for="message">Message</label><br>
+      <textarea id="message" name="message" rows="4" placeholder="Write something to the instructor..."></textarea>
+    </p>
 
-        <button class="button" type="button">Submit</button>
-
-        <!-- <input type="radio" value="summit"> -->
-      </form>
-    </section>
-
-  </main>
+    <p>
+      <button type="submit">Submit Form</button>
+    </p>
+  </form>
 </body>
-
 </html>
